@@ -1,0 +1,2 @@
+judge,case_count,race,gender,age_at_arrest,prior_vfo_cnt,rearrest,pend_vfo,prior_nonvfo_cnt,prior_misd_cnt,offense_month,offense_year,top_charge_weight_at_arraign,top_charge_at_arraign_violent_felony_ind,hate_crime_ind,top_charge_at_arraign,district
+"Hayden, Matthew C.",216,0.0592524015033059,0.0046606182529896605,0.16252791302217423,0.03884793836732262,0.029409948319303804,0.020055831192868502,0.08743847231837083,0.12156968811834219,0.12067863939378268,0.09788100020443845,0.049208551002248115,0.04982993752283331,0.0,0.15863906078201978,0.0

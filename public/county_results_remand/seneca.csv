@@ -1,0 +1,2 @@
+judge,case_count,race,gender,age_at_arrest,prior_vfo_cnt,rearrest,pend_vfo,prior_nonvfo_cnt,prior_misd_cnt,offense_month,offense_year,top_charge_weight_at_arraign,top_charge_at_arraign_violent_felony_ind,hate_crime_ind,top_charge_at_arraign,district
+"Porsch, Barry L.",351,0.03088416847030594,0.021143181438854495,0.1816283092105221,0.027037680634618966,0.00718255267087434,0.009771274269101168,0.10086708553729751,0.14987509868813134,0.1285824496103604,0.07566286533745588,0.07029265542571038,0.02101518480003724,0.0,0.17605749390673023,0.0

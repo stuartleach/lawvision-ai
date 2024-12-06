@@ -1,0 +1,2 @@
+judge,case_count,race,gender,age_at_arrest,prior_vfo_cnt,rearrest,pend_vfo,prior_nonvfo_cnt,prior_misd_cnt,offense_month,offense_year,top_charge_weight_at_arraign,top_charge_at_arraign_violent_felony_ind,hate_crime_ind,top_charge_at_arraign,district
+"Cook, Jason L.",209,0.060871438768917985,0.021362148928255928,0.1193049997412755,0.04861936155901615,0.001992813050098614,0.0874372098662803,0.07037950765073575,0.09477689324823346,0.11165486916904217,0.08953696309547751,0.08541547935576681,0.03690411453691877,0.0,0.17174420102998103,0.0

@@ -1,0 +1,25 @@
+.
+├── +layout.svelte
+├── +layout.ts
+├── +page.svelte
+├── +page.ts
+├── App.css
+├── App.tsx
+├── assets
+│   └── react.svg
+├── index.css
+├── lib
+│   ├── api.ts
+│   ├── data.ts
+│   ├── types
+│   │   └── frontendTypes.ts
+│   └── utils
+│       ├── format.ts
+│       ├── misc.ts
+│       ├── mutate.ts
+│       └── sort.ts
+├── main.tsx
+├── tree.txt
+└── vite-env.d.ts
+
+5 directories, 18 files

@@ -1,0 +1,19 @@
+import React from 'react';
+import SelectorContainer from '../components/JudgeTable';
+import { useData } from '../hooks/useData';
+
+const Home: React.FC = () => {
+  const { loading } = useData();
+
+  return (
+    <div>
+      {loading ? (
+        <div className="loading">Loading...</div>
+      ) : (
+        <SelectorContainer />
+      )}
+    </div>
+  );
+};
+
+export default Home;

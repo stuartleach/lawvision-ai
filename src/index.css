@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 222.2 84% 4.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222.2 84% 4.9%;
+        --primary: 222.2 47.4% 11.2%;
+        --primary-foreground: 210 40% 98%;
+        --secondary: 210 40% 96.1%;
+        --secondary-foreground: 222.2 47.4% 11.2%;
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+        --accent: 210 40% 96.1%;
+        --accent-foreground: 222.2 47.4% 11.2%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 214.3 31.8% 91.4%;
+        --input: 214.3 31.8% 91.4%;
+        --ring: 222.2 84% 4.9%;
+        --radius: 0.5rem;
+        --chart-1: 12 76% 61%;
+        --chart-2: 173 58% 39%;
+        --chart-3: 197 37% 24%;
+        --chart-4: 43 74% 66%;
+        --chart-5: 27 87% 67%;
+        --color-primary: #ff0000;
+        --color-secondary: #00ff00;
+        --color-tertiary: #0000ff;
+        --color-neutral: #f9f9f9;
+        --color-neutral-dark: #333;
+        --color-neutral-light: #f9f9f9;
+        --color-neutral-lighter: #f3f3f3;
+        --color-neutral-lightest: #f9f9f9;
+        --color-neutral-darkest: #333;
+        background-color: rgb(49, 49, 52, 1);
+    }
+
+    .dark {
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+        --card: 222.2 84% 4.9%;
+        --card-foreground: 210 40% 98%;
+        --popover: 222.2 84% 4.9%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 210 40% 98%;
+        --primary-foreground: 222.2 47.4% 11.2%;
+        --secondary: 217.2 32.6% 17.5%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217.2 32.6% 17.5%;
+        --muted-foreground: 215 20.2% 65.1%;
+        --accent: 217.2 32.6% 17.5%;
+        --accent-foreground: 210 40% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 217.2 32.6% 17.5%;
+        --input: 217.2 32.6% 17.5%;
+        --ring: 212.7 26.8% 83.9%;
+        --chart-1: 220 70% 50%;
+        --chart-2: 160 60% 45%;
+        --chart-3: 30 80% 55%;
+        --chart-4: 280 65% 60%;
+        --chart-5: 340 75% 55%;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Start with vertical layout */
+    min-height: 100%; /* Make container at least the viewport height */
+    min-width: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/*****************/
+/* MEDIA QUERIES */
+/*****************/
+
+@media (min-width: 2000px) {
+    .outer-container {
+        @apply w-[80vw] transition-all;
+    }
+}
+
+@media (max-width: 768px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+}
+
+/*****************/
+/* COLORS */
+/*****************/
+
+.totalCases-color {
+    @apply text-blue-500
+    /*bg-gradient-to-bl from-blue-500 to-blue-500;*/
+}
+
+.averageBailAmount-color {
+    @apply text-orange-500
+    /*bg-gradient-to-bl from-orange-500 to-orange-500;*/
+}
+
+.bailSet-color {
+    @apply text-yellow-500
+    /*bg-gradient-to-bl from-yellow-500 to-yellow-500;*/
+}
+
+.remanded-color {
+    @apply text-red-500
+    /*bg-gradient-to-bl from-red-500 to-red-500;*/
+}
+
+.released-color {
+    @apply text-green-500
+    /*bg-gradient-to-bl from-green-500 to-green-500;*/
+}
