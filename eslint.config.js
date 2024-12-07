@@ -30,20 +30,20 @@ export default [
             "@typescript-eslint": ts,
         },
         rules: {
-            // ...ts.configs.recommended.rules,
+            ...ts.configs.recommended.rules,
         },
     },
     {
-        // rules: {
-        //     "no-unused-vars": ["error", {
-        //         vars: "all",
-        //         args: "after-used",
-        //         ignoreRestSiblings: false,
-        //         argsIgnorePattern: "^_",
-        //         varsIgnorePattern: "^_",
-        //         caughtErrors: "all"
-        //     }],
-        // },
+        rules: {
+            "no-unused-vars": ["error", {
+                vars: "all",
+                args: "after-used",
+                ignoreRestSiblings: false,
+                argsIgnorePattern: "^_",
+                varsIgnorePattern: "^_",
+                caughtErrors: "all"
+            }],
+        },
     },
     {
         ignores: ["build/", "dist/"],

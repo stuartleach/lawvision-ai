@@ -87,7 +87,7 @@ const JudgeComparisonChart: React.FC<JudgeComparisonChartProps> = ({
     return value.length > 10 ? `${value.substring(0, 10)}...` : value;
   };
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label }: any) => {  
     if (active && payload && payload.length) {
       return (
         <div className="bg-zinc-800 p-2 border border-zinc-700 rounded shadow text-zinc-300">

@@ -48,6 +48,7 @@ type DataContextType = {
   setSelectedCounty: React.Dispatch<React.SetStateAction<County | null>>;
   selectedJudge: Judge | null;
   setSelectedJudge: React.Dispatch<React.SetStateAction<Judge | null>>;
+  severityLabels: string[];
 };
 
 type DataProviderProps = {
@@ -166,6 +167,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     selectedCounty,
     selectedJudge,
     setSelectedJudge,
+    severityLabels: [],
   };
 
   return (
