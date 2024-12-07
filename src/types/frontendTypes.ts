@@ -55,6 +55,7 @@ export interface Released {
 }
 
 export interface ArraignmentResults {
+  [key: string]: BailSet | Remanded | Released | number;
   bailSet: BailSet;
   remanded: Remanded;
   released: Released;

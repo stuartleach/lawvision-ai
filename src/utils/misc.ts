@@ -10,6 +10,11 @@ import {
 } from "../types/frontendTypes";
 import { useData } from "../hooks/useData.tsx";
 
+// Type guard to check if the value has a percent property
+function hasPercentProperty(value: any): value is { percent: number; raw: number } {
+  return value && typeof value.percent === 'number' && typeof value.raw === 'number';
+}
+
 export const getValue = (
   judge: Judge,
   metric: keyof ArraignmentResults | "averageBailAmount",
@@ -25,7 +30,7 @@ export const getValue = (
     return results?.bailSet?.amount ?? 0;
   } else {
     const data = results?.[metric];
-    return percent ? (data?.percent ?? 0) : (data?.raw ?? 0);
+    return percent ? (hasPercentProperty(data) ? data.percent : 0) : (hasPercentProperty(data) ? data.raw : 0);
   }
 };
 
