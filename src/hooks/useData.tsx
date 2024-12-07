@@ -50,7 +50,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({children}) => {
     const [filterRace, setFilterRace] = useState<string>('Any');
     const [filterSeverity, setFilterSeverity] = useState<string>('Any');
     const [sortTarget, setSortTarget] = useState<SortTarget | null>(null);
-    const [countyNameFilter, setCountyNameFilter] = useState<string>('Any');
+    const [countyNameFilter, setCountyNameFilter] = useState<string | null>('Any');
     const [judgeNameFilter, setJudgeNameFilter] = useState<string>('');
     const [selectedCounty, setSelectedCounty] = useState<County | null>(null);
     const [selectedJudge, setSelectedJudge] = useState<Judge | null>(null);

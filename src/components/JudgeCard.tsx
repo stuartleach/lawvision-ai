@@ -20,9 +20,9 @@ export const JudgeCard: React.FC = () => {
     }
 
     return (
-        <>
+        <div className="z-10">
             <ShadBarChart judge={selectedJudge} county={selectedCounty} state={newYorkState}/>
-            <JudgeProfile/></>
+            <JudgeProfile/></div>
     );
 }
 

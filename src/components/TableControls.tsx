@@ -1,7 +1,15 @@
 import React from "react";
 import {useData} from "@/hooks/useData.tsx";
 import {Race, SeverityLevel} from "@/types/frontendTypes.ts";
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.tsx";
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue
+} from "@/components/ui/select.tsx";
 import {Slider} from "@/components/ui/slider.tsx";
 import {formatNumber} from "@/utils/format.ts";
 import {TableControlsProps} from "@/components/JudgesTable.tsx";
@@ -26,12 +34,15 @@ export const TableControls: React.FC<TableControlsProps> = ({
     const {allCounties} = useData();
     const races: Race[] = ['Any', 'White', 'Black', 'American Indian/Alaskan Native', 'Asian/Pacific Islander', 'Other', 'Unknown'];
     const severities: SeverityLevel[] = ['Any', 'AF', 'BF', 'CF', 'DF', 'EF', 'AM', 'BM', 'I', 'V', 'UM'];
-    const counties: string[] = ['Any',...allCounties.map(c => c.name)]; // Add actual county names
+    const counties: string[] = ['Any', ...allCounties.map(c => c.name)]; // Add actual county names
 
     return (
         <div className="space-y-4 mb-4">
-            <div className="flex space-x-4">
-                <div className="flex-1">
+            <div className="flex space-x-4 overflow-scroll">
+                <div className="flex-1 min-w-64">
+                    <SelectGroup>
+                        <SelectLabel className="pl-1 text-zinc-400">Judge Name</SelectLabel>
+                    </SelectGroup>
                     <input
                         type="text"
                         value={judgeNameFilter}
@@ -40,36 +51,49 @@ export const TableControls: React.FC<TableControlsProps> = ({
                         className="w-full p-2 border rounded bg-zinc-300"
                     />
                 </div>
-                <Select value={race} onValueChange={(value) => setRace(value as Race)}>
-                    <SelectTrigger className="w-[180px] bg-zinc-300">
-                        <SelectValue placeholder="Select Race"/>
-                    </SelectTrigger>
-                    <SelectContent>
-                        {races.map((r) => (
-                            <SelectItem className="bg-zinc-300" key={r} value={r}>{r}</SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-                <Select value={severity} onValueChange={(value) => setSeverity(value as SeverityLevel)}>
-                    <SelectTrigger className="w-[180px] bg-zinc-300">
-                        <SelectValue placeholder="Select Severity"/>
-                    </SelectTrigger>
-                    <SelectContent>
-                        {severities.map((s) => (
-                            <SelectItem className="bg-zinc-300" key={s} value={s}>{s}</SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-                <Select value={county} onValueChange={(value) => setCounty(value)}>
-                    <SelectTrigger className="w-[180px] bg-zinc-300">
-                        <SelectValue placeholder="Select County"/>
-                    </SelectTrigger>
-                    <SelectContent>
-                        {counties.map((c) => (
-                            <SelectItem className="bg-zinc-300" key={c} value={c}>{c}</SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
+                <SelectGroup className="flex-row flex-1 flex space-x-4">
+                    <div className="flex flex-col">
+                        <SelectLabel className="pl-1  text-zinc-400">Race</SelectLabel>
+                        <Select value={race} onValueChange={(value) => setRace(value as Race)}>
+                            <SelectTrigger className="w-[180px] bg-zinc-300">
+                                <SelectValue placeholder="Select Race"/>
+                            </SelectTrigger>
+                            <SelectContent>
+                                {races.map((r) => (
+                                    <SelectItem className="bg-zinc-300" key={r} value={r}>{r}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div className="flex flex-col">
+
+                        <SelectLabel className="pl-1 text-zinc-400">Severity</SelectLabel>
+                        <Select value={severity} onValueChange={(value) => setSeverity(value as SeverityLevel)}>
+                            <SelectTrigger className="w-[180px] bg-zinc-300">
+                                <SelectValue placeholder="Select Severity"/>
+                            </SelectTrigger>
+                            <SelectContent>
+                                {severities.map((s) => (
+                                    <SelectItem className="bg-zinc-300" key={s} value={s}>{s}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div className="flex flex-col">
+                        <SelectLabel className="pl-1 text-zinc-400">County</SelectLabel>
+                        <Select value={county} onValueChange={(value) => setCounty(value)}>
+                            <SelectTrigger className="w-[180px] bg-zinc-300">
+                                <SelectValue placeholder="Select County"/>
+                            </SelectTrigger>
+                            <SelectContent>
+                                {counties.map((c) => (
+                                    <SelectItem className="bg-zinc-300" key={c} value={c}>{c}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                </SelectGroup>
+
             </div>
             <div>
                 <label className="block text-sm font-medium text-gray-300">Minimum Total Cases</label>

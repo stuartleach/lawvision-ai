@@ -14,9 +14,7 @@ import {Navbar, NavbarItem, NavbarSection, NavbarSpacer} from '@/components/navb
 import {
     Sidebar,
     SidebarBody,
-    SidebarFooter,
     SidebarHeader,
-    SidebarHeading,
     SidebarItem,
     SidebarLabel,
     SidebarSection,
@@ -25,26 +23,12 @@ import {
 
 import {
     ArrowRightStartOnRectangleIcon,
-    ChevronDownIcon,
-    ChevronUpIcon,
     Cog8ToothIcon,
     LightBulbIcon,
-    PlusIcon,
     ShieldCheckIcon,
     UserIcon,
 } from '@heroicons/react/16/solid';
-import {
-    Cog6ToothIcon,
-    HomeIcon,
-    InboxIcon,
-    MagnifyingGlassIcon,
-    MegaphoneIcon,
-    QuestionMarkCircleIcon,
-    SparklesIcon,
-    Square2StackIcon,
-    TicketIcon,
-    XCircleIcon
-} from '@heroicons/react/20/solid';
+import {HomeIcon, InboxIcon, MagnifyingGlassIcon, QuestionMarkCircleIcon, XCircleIcon} from '@heroicons/react/20/solid';
 import {SidebarLayout} from '@/components/sidebar-layout'
 import {JudgesTable} from "@/components/JudgesTable.tsx";
 import {JudgeCard} from "@/components/JudgeCard.tsx";
@@ -154,6 +138,10 @@ function Layout({children}: { children: React.ReactNode }) {
                             <SidebarItem href="/">
                                 <HomeIcon/>
                                 <SidebarLabel>Home</SidebarLabel>
+                            </SidebarItem>
+                            <SidebarItem href="/about">
+                                <QuestionMarkCircleIcon/>
+                                <SidebarLabel>About</SidebarLabel>
                             </SidebarItem>
                          {/*   <SidebarItem href="/events">
                                 <Square2StackIcon/>

@@ -249,7 +249,7 @@ function Layout({children}: { children: React.ReactNode }) {
                         <div>{children}</div>
                     </div>
                     {selectedJudge && (
-                        <div className="px-4 py-6 sm:px-6 lg:pl-8 lg:flex-1 ">
+                        <div className="px-4 py-6 sm:px-6 lg:pl-8 lg:flex-1 z-10 bg-zinc-300">
                             <div className="flex cursor-pointer ">
                                 <div className="flex flex-col w-full  space-y-4">
                                     <div className="flex justify-end">
