@@ -37,15 +37,14 @@ const FeatureImportanceChart: React.FC = () => {
 
     return Object.entries(featureImportances)
       .filter(
-        ([key, value]) =>
-          key !== "case_count" && typeof value === "number",
+        ([key, value]) => key !== "case_count" && typeof value === "number",
       )
       .map(([key, value]) => ({
         feature: key,
         judge: 0, // Default value or derive from your data
         county: 0, // Default value or derive from your data
         state: 0, // Default value or derive from your data
-        [sortKey]: value
+        [sortKey]: value,
       }));
   };
 

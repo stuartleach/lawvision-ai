@@ -27,8 +27,8 @@ type DataContextType = {
   allJudges: Judge[];
   geoJson: GeoJSONData | null;
   newYorkState: NewYorkState | null;
-  currentPage: string;
-  setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
+  currentPage: PageOption;
+  setCurrentPage: React.Dispatch<React.SetStateAction<PageOption>>;
   selectedEntity: Judge | County | null;
   setSelectedEntity: React.Dispatch<
     React.SetStateAction<Judge | County | null>
@@ -56,15 +56,17 @@ type DataProviderProps = {
   children: ReactNode;
 };
 
+type PageOption = "home" | "about";
+
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
+  const [currentPage, setCurrentPage] = useState<PageOption>("home");
   const [loading, setLoading] = useState<boolean>(true);
   const [allCounties, setAllCounties] = useState<County[]>([]);
   const [allJudges, setAllJudges] = useState<Judge[]>([]);
   const [geoJson, setGeoJson] = useState<GeoJSONData | null>(null);
   const [newYorkState, setNewYorkState] = useState<NewYorkState | null>(null);
-  const [currentPage, setCurrentPage] = useState<string>("judges");
   const [selectedEntity, setSelectedEntity] = useState<Judge | County | null>(
     null,
   );

@@ -45,11 +45,14 @@ import { JudgesTable } from "@/components/JudgesTable.tsx";
 import { JudgeCard } from "@/components/JudgeCard.tsx";
 
 const App: React.FC = () => {
+  const { currentPage } = useData();
+
   return (
     <DataProvider>
       <Layout>
         <div className={"flex-col flex"}>
-          <JudgesTable />
+          {currentPage === "home" && <JudgesTable />}
+          {/* {currentPage === "about" && <AboutPage />} */}
         </div>
       </Layout>
     </DataProvider>
@@ -58,6 +61,8 @@ const App: React.FC = () => {
 
 function Layout({ children }: { children: React.ReactNode }) {
   const { selectedJudge, setSelectedJudge } = useData();
+
+  const { setCurrentPage } = useData();
 
   return (
     <SidebarLayout
@@ -108,11 +113,11 @@ function Layout({ children }: { children: React.ReactNode }) {
           <SidebarHeader></SidebarHeader>
           <SidebarBody>
             <SidebarSection>
-              <SidebarItem href="/">
+              <SidebarItem onClick={() => setCurrentPage("home")}>
                 <HomeIcon />
                 <SidebarLabel>Home</SidebarLabel>
               </SidebarItem>
-              <SidebarItem href="/about">
+              <SidebarItem onClick={() => setCurrentPage("about")}>
                 <QuestionMarkCircleIcon />
                 <SidebarLabel>About</SidebarLabel>
               </SidebarItem>

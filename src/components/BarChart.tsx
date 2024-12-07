@@ -78,14 +78,19 @@ const JudgeComparisonChart: React.FC<JudgeComparisonChartProps> = ({
   ];
 
   function hasPercentProperty(value: any): value is { percent: number } {
-    return value && typeof value === 'object' && 'percent' in value && typeof value.percent === 'number';
+    return (
+      value &&
+      typeof value === "object" &&
+      "percent" in value &&
+      typeof value.percent === "number"
+    );
   }
 
   const chartData = metrics.map((metric) => {
     const judgeValue = judge.arraignmentResults[severity][race][metric.key];
     const countyValue = county.arraignmentResults[severity][race][metric.key];
     const stateValue = state.arraignmentResults[severity][race][metric.key];
-    
+
     return {
       metric: metric.name,
       Judge: hasPercentProperty(judgeValue) ? judgeValue.percent : 0,

@@ -29,7 +29,7 @@ export interface BarGraphInput {
 
 // Type guard to check if the value has a percent property
 function hasPercentProperty(value: any): value is { percent: number } {
-  return value && typeof value.percent === 'number';
+  return value && typeof value.percent === "number";
 }
 
 export const mutateDataForZoomableBarGraph = ({
@@ -46,7 +46,10 @@ export const mutateDataForZoomableBarGraph = ({
       children: judges
         .filter((judge) => judge.primaryCounty === county.name)
         .map((judge) => {
-          const metricValue = judge.arraignmentResults[config.severity || "Any"][config.race || "Any"][config.metric];
+          const metricValue =
+            judge.arraignmentResults[config.severity || "Any"][
+              config.race || "Any"
+            ][config.metric];
           return {
             name: judge.name,
             value: hasPercentProperty(metricValue) ? metricValue.percent : 0,
