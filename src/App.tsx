@@ -43,11 +43,15 @@ import {
   QuestionMarkCircleIcon,
   XCircleIcon,
 } from "@heroicons/react/20/solid";
+import { CloudCog } from "lucide-react";
 
 
-const AboutPage = () => {
+const AboutPage: React.FC = () => {
   return (
     <div>
+      <p>about page</p>
+      <p>about page</p>
+      <p>about page</p>
       <p>about page</p>
     </div>
   );
@@ -57,21 +61,17 @@ const App: React.FC = () => {
   const { currentPage } = useData();
 
   return (
-    <DataProvider>
       <Layout>
         <div className={"flex-col flex"}>
           {currentPage === "home" && <JudgesTable />}
           {currentPage === "about" && <AboutPage />}
         </div>
       </Layout>
-    </DataProvider>
   );
 };
 
 function Layout({ children }: { children: React.ReactNode }) {
-  const { selectedJudge, setSelectedJudge } = useData();
-
-  const { setCurrentPage } = useData();
+  const { selectedJudge, setSelectedJudge, setCurrentPage, currentPage } = useData();
 
   return (
     <SidebarLayout
@@ -122,11 +122,11 @@ function Layout({ children }: { children: React.ReactNode }) {
           <SidebarHeader></SidebarHeader>
           <SidebarBody>
             <SidebarSection>
-              <SidebarItem onClick={() => setCurrentPage("home")}>
+              <SidebarItem onClick={() => {console.log("setting current page now"); setCurrentPage("home"); console.log("current page: ", currentPage)}}>
                 <HomeIcon />
                 <SidebarLabel>Home</SidebarLabel>
               </SidebarItem>
-              <SidebarItem onClick={() => setCurrentPage("about")}>
+              <SidebarItem onClick={() => {console.log("setting current page now"); setCurrentPage("about"); console.log("current page: ", currentPage)}}>
                 <QuestionMarkCircleIcon />
                 <SidebarLabel>About</SidebarLabel>
               </SidebarItem>
@@ -140,8 +140,8 @@ function Layout({ children }: { children: React.ReactNode }) {
         <div className={`flex-1 w-full ${selectedJudge ? "lg:flex" : ""}`}>
           <div
             className={`border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 ${selectedJudge
-                ? "lg:w-1/2 xl:w-2/5 lg:shrink-0 lg:border-b-0 lg:border-r lg:pl-6"
-                : "w-full"
+              ? "lg:w-1/2 xl:w-2/5 lg:shrink-0 lg:border-b-0 lg:border-r lg:pl-6"
+              : "w-full"
               }`}
           >
             <div>{children}</div>

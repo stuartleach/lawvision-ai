@@ -48,7 +48,7 @@ export const mutateDataForZoomableBarGraph = ({
         .map((judge) => {
           const metricValue =
             judge.arraignmentResults[config.severity || "Any"][
-              config.race || "Any"
+            config.race || "Any"
             ][config.metric];
           return {
             name: judge.name,
