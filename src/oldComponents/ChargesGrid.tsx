@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Money from '../components/MoneyDisplay';
-import Percent from '../components/PercentDisplay';
-import { County, Judge, SeverityLevel } from '../types/frontendTypes';
-import { formatNumber } from '../utils/format';
+import React, { useState } from "react";
+import Money from "../components/MoneyDisplay";
+import Percent from "../components/PercentDisplay";
+import { County, Judge, SeverityLevel } from "../types/frontendTypes";
+import { formatNumber } from "../utils/format";
 
 interface ChargesGridProps {
   entity: Judge | County | null;
@@ -11,28 +11,33 @@ interface ChargesGridProps {
 const ChargesGrid: React.FC<ChargesGridProps> = ({ entity }) => {
   // Local state for graph target data
   const [graphTargetData, setGraphTargetData] = useState({
-    metric: '',
-    severity: '',
-    race: 'Any',
-    val: '',
+    metric: "",
+    severity: "",
+    race: "Any",
+    val: "",
   });
 
-  const severityLevels = ['Any', 'Low', 'Medium', 'High']; // Example severity levels
+  const severityLevels = ["Any", "Low", "Medium", "High"]; // Example severity levels
   const severityLabels: Record<string, string> = {
-    Any: 'Any',
-    Low: 'Low Severity',
-    Medium: 'Medium Severity',
-    High: 'High Severity',
+    Any: "Any",
+    Low: "Low Severity",
+    Medium: "Medium Severity",
+    High: "High Severity",
   }; // Example severity labels
 
-  const [selectedSeverity, setSelectedSeverity] = useState<SeverityLevel | null>(null);
+  const [selectedSeverity, setSelectedSeverity] =
+    useState<SeverityLevel | null>(null);
 
   const handleRowClick = (severity: SeverityLevel) => {
     setSelectedSeverity((prev) => (prev === severity ? null : severity));
   };
 
-  const handleGraphTargetClick = (metric: string, severity: SeverityLevel, val: string) => {
-    setGraphTargetData({ metric, severity, race: 'Any', val });
+  const handleGraphTargetClick = (
+    metric: string,
+    severity: SeverityLevel,
+    val: string,
+  ) => {
+    setGraphTargetData({ metric, severity, race: "Any", val });
   };
 
   // Check if entity is null or undefined
@@ -85,73 +90,99 @@ const ChargesGrid: React.FC<ChargesGridProps> = ({ entity }) => {
               <tr
                 key={severity}
                 className={`${
-                  i % 2 === 0 && severity !== 'Any' ? 'bg-zinc-900' : ''
+                  i % 2 === 0 && severity !== "Any" ? "bg-zinc-900" : ""
                 } ${
                   selectedSeverity && severity !== selectedSeverity
-                    ? 'blur-xs opacity-[25%] filter transition-all'
-                    : ''
+                    ? "blur-xs opacity-[25%] filter transition-all"
+                    : ""
                 } ${
-                  severity === selectedSeverity ? 'z-[1000000]' : ''
+                  severity === selectedSeverity ? "z-[1000000]" : ""
                 } cursor-pointer text-zinc-300 bg-zinc-950 text-right *:pr-10 *:py-4 first:rounded-t-20 ${
-                  severity === 'Any' ? 'bg-zinc-900 border-b' : ''
+                  severity === "Any" ? "bg-zinc-900 border-b" : ""
                 }`}
                 onClick={() => handleRowClick(severity)}
               >
                 <td className="text-left pl-8">{severityLabels[severity]}</td>
                 <td className="font-mono totalCases-color">
-                  {formatNumber(entity.arraignmentResults[severity].Any.totalCases)}
+                  {formatNumber(
+                    entity.arraignmentResults[severity].Any.totalCases,
+                  )}
                 </td>
                 <td
                   className={`font-mono averageBailAmount-color ${
-                    graphTargetData.metric === 'bailSet' &&
+                    graphTargetData.metric === "bailSet" &&
                     graphTargetData.severity === severity &&
-                    graphTargetData.race === 'Any' &&
-                    graphTargetData.val === 'amount'
-                      ? 'clicked'
-                      : ''
+                    graphTargetData.race === "Any" &&
+                    graphTargetData.val === "amount"
+                      ? "clicked"
+                      : ""
                   }`}
-                  onClick={() => handleGraphTargetClick('bailSet', severity, 'amount')}
+                  onClick={() =>
+                    handleGraphTargetClick("bailSet", severity, "amount")
+                  }
                 >
-                  <Money value={entity.arraignmentResults[severity].Any.bailSet.amount} />
+                  <Money
+                    value={
+                      entity.arraignmentResults[severity].Any.bailSet.amount
+                    }
+                  />
                 </td>
                 <td
                   className={`font-mono bailSet-color ${
-                    graphTargetData.metric === 'bailSet' &&
+                    graphTargetData.metric === "bailSet" &&
                     graphTargetData.severity === severity &&
-                    graphTargetData.race === 'Any' &&
-                    graphTargetData.val === 'percent'
-                      ? 'clicked'
-                      : ''
+                    graphTargetData.race === "Any" &&
+                    graphTargetData.val === "percent"
+                      ? "clicked"
+                      : ""
                   }`}
-                  onClick={() => handleGraphTargetClick('bailSet', severity, 'percent')}
+                  onClick={() =>
+                    handleGraphTargetClick("bailSet", severity, "percent")
+                  }
                 >
-                  <Percent value={entity.arraignmentResults[severity].Any.bailSet.percent} />
+                  <Percent
+                    value={
+                      entity.arraignmentResults[severity].Any.bailSet.percent
+                    }
+                  />
                 </td>
                 <td
                   className={`font-mono remanded-color ${
-                    graphTargetData.metric === 'remanded' &&
+                    graphTargetData.metric === "remanded" &&
                     graphTargetData.severity === severity &&
-                    graphTargetData.race === 'Any' &&
-                    graphTargetData.val === 'percent'
-                      ? 'clicked'
-                      : ''
+                    graphTargetData.race === "Any" &&
+                    graphTargetData.val === "percent"
+                      ? "clicked"
+                      : ""
                   }`}
-                  onClick={() => handleGraphTargetClick('remanded', severity, 'percent')}
+                  onClick={() =>
+                    handleGraphTargetClick("remanded", severity, "percent")
+                  }
                 >
-                  <Percent value={entity.arraignmentResults[severity].Any.remanded.percent} />
+                  <Percent
+                    value={
+                      entity.arraignmentResults[severity].Any.remanded.percent
+                    }
+                  />
                 </td>
                 <td
                   className={`font-mono released-color ${
-                    graphTargetData.metric === 'released' &&
+                    graphTargetData.metric === "released" &&
                     graphTargetData.severity === severity &&
-                    graphTargetData.race === 'Any' &&
-                    graphTargetData.val === 'percent'
-                      ? 'clicked'
-                      : ''
+                    graphTargetData.race === "Any" &&
+                    graphTargetData.val === "percent"
+                      ? "clicked"
+                      : ""
                   }`}
-                  onClick={() => handleGraphTargetClick('released', severity, 'percent')}
+                  onClick={() =>
+                    handleGraphTargetClick("released", severity, "percent")
+                  }
                 >
-                  <Percent value={entity.arraignmentResults[severity].Any.released.percent} />
+                  <Percent
+                    value={
+                      entity.arraignmentResults[severity].Any.released.percent
+                    }
+                  />
                 </td>
               </tr>
             ))}

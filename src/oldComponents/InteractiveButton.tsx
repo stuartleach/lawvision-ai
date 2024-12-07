@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface InteractiveButtonProps {
   onMouseEnter?: () => void;
@@ -22,8 +22,12 @@ const InteractiveButton: React.FC<InteractiveButtonProps> = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <h3 className="w-[10rem] text-left text-lg font-bold text-zinc-300">{title}</h3>
-      <div className="flex justify-end text-right font-mono font-bold text-zinc-400">{stat}</div>
+      <h3 className="w-[10rem] text-left text-lg font-bold text-zinc-300">
+        {title}
+      </h3>
+      <div className="flex justify-end text-right font-mono font-bold text-zinc-400">
+        {stat}
+      </div>
     </button>
   );
 };

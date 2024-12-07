@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface SortButtonProps {
   text: string;
@@ -6,13 +6,20 @@ interface SortButtonProps {
   onClick: () => void;
 }
 
-const SortButton: React.FC<SortButtonProps> = ({ text, selectedMetric, onClick }) => {
+const SortButton: React.FC<SortButtonProps> = ({
+  text,
+  selectedMetric,
+  onClick,
+}) => {
   return (
     <div className="sort text-right">
       {text} <br />
-      <button className={`${selectedMetric}-color cursor-pointer`} onClick={onClick}>
+      <button
+        className={`${selectedMetric}-color cursor-pointer`}
+        onClick={onClick}
+      >
         {selectedMetric}
-        {selectedMetric === 'averageBailSet' ? 'amount' : 'rate'}
+        {selectedMetric === "averageBailSet" ? "amount" : "rate"}
       </button>
     </div>
   );

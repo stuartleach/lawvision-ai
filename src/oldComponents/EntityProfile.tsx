@@ -1,8 +1,8 @@
-import React from 'react';
-import ChargesGrid from './ChargesGrid';
-import ProfileHeader from './EntityInfoHeader';
-import ProfileVisualizations from './ProfileVisualizations';
-import { County, Judge } from '../types/frontendTypes';
+import React from "react";
+import ChargesGrid from "./ChargesGrid";
+import ProfileHeader from "./EntityInfoHeader";
+import ProfileVisualizations from "./ProfileVisualizations";
+import { County, Judge } from "../types/frontendTypes";
 
 interface EntityProfileProps {
   entity: Judge | County;

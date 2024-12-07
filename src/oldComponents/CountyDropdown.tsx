@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { County } from '../types/frontendTypes'; // Adjust import path as needed
+import React, { useState, useEffect } from "react";
+import { County } from "../types/frontendTypes"; // Adjust import path as needed
 
 interface CountyDropdownProps {
   allCounties: County[];
   onCountySelect: (countyName: string | null) => void;
 }
 
-const CountyDropdown: React.FC<CountyDropdownProps> = ({ allCounties, onCountySelect }) => {
+const CountyDropdown: React.FC<CountyDropdownProps> = ({
+  allCounties,
+  onCountySelect,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedCountyName, setSelectedCountyName] = useState<string>('All Counties');
+  const [selectedCountyName, setSelectedCountyName] =
+    useState<string>("All Counties");
 
   // Check if allCounties is a valid array before sorting
   const sortedCounties = Array.isArray(allCounties)
@@ -26,27 +30,27 @@ const CountyDropdown: React.FC<CountyDropdownProps> = ({ allCounties, onCountySe
   };
 
   const handleClear = () => {
-    setSelectedCountyName('All Counties');
+    setSelectedCountyName("All Counties");
     onCountySelect(null);
   };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const dropdown = document.getElementById('dropdown-button');
+      const dropdown = document.getElementById("dropdown-button");
       if (dropdown && !dropdown.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
   return (
     <div>
       <div className="relative flex flex-row align-middle h-12">
-        {selectedCountyName !== 'All Counties' && (
+        {selectedCountyName !== "All Counties" && (
           <button
             type="button"
             className="text-zinc-300 hover:text-gray-50 shadow outline outline-neutral-700 outline-[0.5px] bg-zinc-400/10 hover:bg-zinc-600/10 transition mr-4 px-4"
@@ -99,10 +103,17 @@ const CountyDropdown: React.FC<CountyDropdownProps> = ({ allCounties, onCountySe
                   className="w-full text-left"
                   onClick={() => selectCounty(county)}
                 >
-                  <span className="block truncate font-normal">{county.name}</span>
+                  <span className="block truncate font-normal">
+                    {county.name}
+                  </span>
                   {selectedCountyName === county.name && (
                     <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600">
-                      <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <svg
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
                         <path
                           fillRule="evenodd"
                           d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"

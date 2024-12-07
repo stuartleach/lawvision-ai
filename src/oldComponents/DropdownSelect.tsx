@@ -1,28 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import { useData } from '../hooks/useData'; // Import your context or store hook
-import { Race } from '../types/frontendTypes';
+import React, { useState, useEffect } from "react";
+import { useData } from "../hooks/useData"; // Import your context or store hook
+import { Race } from "../types/frontendTypes";
 
 interface DropdownSelectProps {
   label: string;
   options: string[];
-  type: 'county' | 'severity' | 'race';
+  type: "county" | "severity" | "race";
 }
 
-const DropdownSelect: React.FC<DropdownSelectProps> = ({ label = 'Select Option', options = [], type = '' }) => {
-  const { countyNameFilter, setCountyNameFilter, filterSeverity, setFilterSeverity, filterRace, setFilterRace } =
-    useData();
-  const [selectedOption, setSelectedOption] = useState<string>('');
+const DropdownSelect: React.FC<DropdownSelectProps> = ({
+  label = "Select Option",
+  options = [],
+  type = "",
+}) => {
+  const {
+    countyNameFilter,
+    setCountyNameFilter,
+    filterSeverity,
+    setFilterSeverity,
+    filterRace,
+    setFilterRace,
+  } = useData();
+  const [selectedOption, setSelectedOption] = useState<string>("");
   const [expanded, setExpanded] = useState<boolean>(false);
 
   const selectOption = (option: string) => {
     switch (type) {
-      case 'county':
+      case "county":
         setCountyNameFilter(option);
         break;
-      case 'severity':
+      case "severity":
         setFilterSeverity(option);
         break;
-      case 'race':
+      case "race":
         setFilterRace(option as Race);
         break;
       default:
@@ -33,13 +43,13 @@ const DropdownSelect: React.FC<DropdownSelectProps> = ({ label = 'Select Option'
 
   useEffect(() => {
     switch (type) {
-      case 'county':
+      case "county":
         setSelectedOption(countyNameFilter);
         break;
-      case 'severity':
+      case "severity":
         setSelectedOption(filterSeverity);
         break;
-      case 'race':
+      case "race":
         setSelectedOption(filterRace);
         break;
       default:
@@ -52,7 +62,10 @@ const DropdownSelect: React.FC<DropdownSelectProps> = ({ label = 'Select Option'
 
   return (
     <div>
-      <label id="listbox-label" className="block text-sm font-medium leading-6 text-zinc-400">
+      <label
+        id="listbox-label"
+        className="block text-sm font-medium leading-6 text-zinc-400"
+      >
         {label}
       </label>
       <div className="relative mt-2">
@@ -64,9 +77,14 @@ const DropdownSelect: React.FC<DropdownSelectProps> = ({ label = 'Select Option'
           aria-labelledby="listbox-label"
           onClick={() => setExpanded(!expanded)}
         >
-          <span className="block truncate">{selectedOption || 'Any'}</span>
+          <span className="block truncate">{selectedOption || "Any"}</span>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-            <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <svg
+              className="h-5 w-5 text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
               <path
                 fillRule="evenodd"
                 d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -82,7 +100,7 @@ const DropdownSelect: React.FC<DropdownSelectProps> = ({ label = 'Select Option'
             role="listbox"
             aria-labelledby="listbox-label"
           >
-            {(type === 'county' ? ['', ...options] : options).map((option) => (
+            {(type === "county" ? ["", ...options] : options).map((option) => (
               <li
                 key={option}
                 className="relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900"
@@ -93,10 +111,17 @@ const DropdownSelect: React.FC<DropdownSelectProps> = ({ label = 'Select Option'
                   setExpanded(false);
                 }}
               >
-                <span className="block truncate font-normal">{option || 'Any'}</span>
+                <span className="block truncate font-normal">
+                  {option || "Any"}
+                </span>
                 {option === selectedOption && (
                   <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600">
-                    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <svg
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
                       <path
                         fillRule="evenodd"
                         d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"

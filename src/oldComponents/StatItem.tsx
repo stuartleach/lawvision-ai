@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface StatItemProps {
   onMouseEnter?: () => void;
@@ -13,7 +13,7 @@ const StatItem: React.FC<StatItemProps> = ({
   onMouseEnter,
   onMouseLeave,
   onClick,
-  className = '',
+  className = "",
   title,
   stat,
 }) => {

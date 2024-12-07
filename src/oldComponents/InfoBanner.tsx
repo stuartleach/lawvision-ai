@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import DownChevron from '../assets/DownChevron';
-import UpChevron from '../assets/UpChevron';
+import React, { useState } from "react";
+import DownChevron from "../assets/DownChevron";
+import UpChevron from "../assets/UpChevron";
 
 const InfoBanner: React.FC = () => {
   const [bannerIsVisible, setBannerIsVisible] = useState(true);
@@ -13,8 +13,16 @@ const InfoBanner: React.FC = () => {
         <div>
           <div className="text-sm text-zinc-400 leading-6 flex-1">
             <p>
-              This data is sourced from <a className="text-zinc-50 underline underline-offset-3" href="https://ww2.nycourts.gov/pretrial-release-data-33136">nycourts.gov</a> and
-              is updated biannually. The latest cases are from <span className="text-zinc-50">2023</span>, and the earliest cases are from <span className="text-zinc-50">October 2020</span>.
+              This data is sourced from{" "}
+              <a
+                className="text-zinc-50 underline underline-offset-3"
+                href="https://ww2.nycourts.gov/pretrial-release-data-33136"
+              >
+                nycourts.gov
+              </a>{" "}
+              and is updated biannually. The latest cases are from{" "}
+              <span className="text-zinc-50">2023</span>, and the earliest cases
+              are from <span className="text-zinc-50">October 2020</span>.
             </p>
           </div>
         </div>
