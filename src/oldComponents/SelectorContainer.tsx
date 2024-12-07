@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState } from "react";
 import DropdownSelect from "./DropdownSelect";
 import EntityLi from "./EntityLi";
 import { useData } from "../hooks/useData";
@@ -13,8 +13,6 @@ const SelectorContainer: React.FC = () => {
     deviation,
     filterRace,
     filterSeverity,
-    selectedCounty,
-    selectedJudge,
     sortTarget,
     setCountyNameFilter,
     setFilterSeverity,
@@ -25,57 +23,53 @@ const SelectorContainer: React.FC = () => {
     setSelectedCounty,
   } = useData();
 
-  const [judges] = useState(allJudges);
-  const [counties] = useState(
-    allCounties.sort((a, b) => a.name.localeCompare(b.name)),
-  );
-  const [severityOptions] = useState([
-    "Any",
-    "AF",
-    "BF",
-    "CF",
-    "DF",
-    "EF",
-    "AM",
-    "BM",
-    "I",
-    "V",
-  ]);
-  const [localSortOrder, setLocalSortOrder] = useState<SortOrder>(
-    SortOrder.desc,
-  );
-  const [currentListTarget, setCurrentListTarget] = useState<
-    "judges" | "counties"
-  >("judges");
+  // const [currentListTarget, setCurrentListTarget] = useState<
+  //   "judges" | "counties"
+  // >("judges");
 
-  useEffect(() => {
-    if (selectedJudge) {
-      setSelectedCounty(null);
-    } else if (selectedCounty) {
-      setSelectedJudge(null);
-    }
-  }, [selectedJudge, selectedCounty, setSelectedJudge, setSelectedCounty]);
+  const currentListTarget = "judges";
 
-  const items = {
-    judges: {
-      name: "Judges",
-      targets: countyNameFilter
-        ? judges.filter((c) => c.primaryCounty === countyNameFilter)
-        : judges,
-    },
-    counties: { name: "Counties", targets: counties },
-  };
+  const [sortOrder, setSortOrder] = useState<SortOrder>(SortOrder.desc);
 
-  const entityList = sortListByTargetGivenRaceAndSeverity(
-    items[currentListTarget].targets,
-    sortTarget,
-    localSortOrder,
-    filterSeverity,
-    filterRace,
-    deviation,
+  const items = useMemo(() => {
+    const countiesWithJudges = countyNameFilter
+      ? allJudges.filter((c) => c.primaryCounty === countyNameFilter)
+      : allJudges;
+    return {
+      judges: {
+        name: "Judges",
+        targets: countiesWithJudges,
+      },
+      counties: { name: "Counties", targets: allCounties },
+    };
+  }, [allJudges, allCounties, countyNameFilter]);
+
+  const entityList = useMemo(
+    () =>
+      sortListByTargetGivenRaceAndSeverity(
+        items[currentListTarget].targets,
+        sortTarget ?? SortTarget.averageBailAmount,
+        sortOrder,
+        filterSeverity,
+        filterRace,
+        deviation,
+      ),
+    [
+      items,
+      currentListTarget,
+      sortTarget,
+      sortOrder,
+      filterSeverity,
+      filterRace,
+      deviation,
+    ],
   );
 
   const handleNextSort = () => {
+    if (sortTarget === null) {
+      setSortTarget(SortTarget.averageBailAmount);
+      return;
+    }
     switch (sortTarget) {
       case SortTarget.averageBailAmount:
         setSortTarget(SortTarget.bailSet);
@@ -92,9 +86,10 @@ const SelectorContainer: React.FC = () => {
   };
 
   const handleNextSortDirection = () => {
-    setLocalSortOrder((prevOrder) =>
-      prevOrder === SortOrder.asc ? SortOrder.desc : SortOrder.asc,
-    );
+    if (!sortTarget) return;
+    const newOrder =
+      sortOrder === SortOrder.asc ? SortOrder.desc : SortOrder.asc;
+    setSortOrder(newOrder);
   };
 
   const raceOptions = [
@@ -154,9 +149,9 @@ const SelectorContainer: React.FC = () => {
                 <p className="text-zinc-500 text-sm">
                   sorted by
                   <span
-                    className={`text-left text-sm tracking-[-.04em] bg-gradient-to-tr from-blue-500 to-blue-300 bg-clip-text font-bold text-transparent ${sortTargetColor(sortTarget)}-color`}
+                    className={`text-left text-sm tracking-[-.04em] bg-gradient-to-tr from-blue-500 to-blue-300 bg-clip-text font-bold text-transparent ${sortTarget !== null ? sortTargetColor(sortTarget) : "default-color"}-color`}
                   >
-                    {sortTarget ? sortTarget + " " : ""}
+                    {sortTarget !== null ? sortTarget + " " : ""}
                   </span>
                 </p>
               </button>
@@ -164,9 +159,9 @@ const SelectorContainer: React.FC = () => {
                 <p className="text-zinc-500 text-sm">
                   direction
                   <span
-                    className={`text-left text-sm tracking-[-.04em] bg-gradient-to-tr from-blue-500 to-blue-300 bg-clip-text font-bold text-transparent ${sortTargetColor(sortTarget)}-color`}
+                    className={`text-left text-sm tracking-[-.04em] bg-gradient-to-tr from-blue-500 to-blue-300 bg-clip-text font-bold text-transparent ${sortTarget !== null ? sortTargetColor(sortTarget) : "default-color"}-color`}
                   >
-                    {localSortOrder === SortOrder.asc
+                    {sortOrder === SortOrder.desc
                       ? "Lowest to highest"
                       : "Highest to lowest"}
                   </span>
@@ -180,12 +175,12 @@ const SelectorContainer: React.FC = () => {
           <div className="filters flex flex-row gap-x-4 *:w-48">
             <DropdownSelect
               label="County"
-              options={counties.map((c) => c.name)}
+              options={allCounties.map((c) => c.name)}
               type="county"
             />
             <DropdownSelect
               label="Severity"
-              options={severityOptions}
+              options={raceOptions}
               type="severity"
             />
             <DropdownSelect label="Race" options={raceOptions} type="race" />

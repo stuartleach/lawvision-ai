@@ -2,7 +2,7 @@ import React from "react";
 import { useData } from "../hooks/useData.tsx";
 import {
   ArraignmentResults,
-  Race,//
+  Race, //
   SeverityLevel,
 } from "../types/frontendTypes";
 import { formatNumber } from "../utils/format";

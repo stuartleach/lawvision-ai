@@ -11,6 +11,7 @@ import {
   Radar,
   RadarChart,
   Tooltip,
+  TooltipProps,
   XAxis,
   YAxis,
 } from "recharts";
@@ -87,21 +88,20 @@ const JudgeComparisonChart: React.FC<JudgeComparisonChartProps> = ({
     return value.length > 10 ? `${value.substring(0, 10)}...` : value;
   };
 
-  const CustomTooltip = ({ active, payload, label }: any) => {  
+  const CustomTooltip = ({
+    active,
+    payload,
+    label,
+  }: TooltipProps<number, string>) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-zinc-800 p-2 border border-zinc-700 rounded shadow text-zinc-300">
           <p className="font-bold">{label}</p>
-          {payload.map(
-            (
-              entry: { color: string; name: string; value: number },
-              index: number,
-            ) => (
-              <p key={index} style={{ color: entry.color }}>
-                {`${entry.name}: ${formatPercent(entry.value)}`}
-              </p>
-            ),
-          )}
+          {payload.map((entry: any, index: number) => (
+            <p key={index} style={{ color: entry.color || "defaultColor" }}>
+              {`${entry.name || ""}: ${formatPercent(entry.value)}`}
+            </p>
+          ))}
         </div>
       );
     }

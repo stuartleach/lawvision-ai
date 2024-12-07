@@ -3,6 +3,7 @@ import React, {
   ReactNode,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from "react";
 import {
@@ -38,9 +39,9 @@ type DataContextType = {
   setFilterRace: React.Dispatch<React.SetStateAction<string>>;
   filterSeverity: string;
   setFilterSeverity: React.Dispatch<React.SetStateAction<string>>;
-  sortTarget: SortTarget;
+  sortTarget: SortTarget | null;
   setSortTarget: React.Dispatch<React.SetStateAction<SortTarget | null>>;
-  countyNameFilter: string;
+  countyNameFilter: string | null;
   setCountyNameFilter: React.Dispatch<React.SetStateAction<string | null>>;
   judgeNameFilter: string;
   setJudgeNameFilter: React.Dispatch<React.SetStateAction<string>>;
@@ -70,11 +71,8 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [deviation, setDeviation] = useState<boolean>(false);
   const [filterRace, setFilterRace] = useState<string>("Any");
   const [filterSeverity, setFilterSeverity] = useState<string>("Any");
-  const [sortTarget, setSortTarget] = useState<SortTarget>(
-    SortTarget.averageBailAmount,
-  );
-  const [countyNameFilter, setCountyNameFilter] =
-    useState<string>("All Counties");
+  const [sortTarget, setSortTarget] = useState<SortTarget | null>(null);
+  const [countyNameFilter, setCountyNameFilter] = useState<string | null>(null);
   const [judgeNameFilter, setJudgeNameFilter] = useState<string>("");
   const [selectedCounty, setSelectedCounty] = useState<County | null>(null);
   const [selectedJudge, setSelectedJudge] = useState<Judge | null>(null);
@@ -141,34 +139,63 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     fetchJudgeImportances();
   }, [selectedJudge]); // Fetch importances whenever selectedJudge changes
 
-  const contextValue: DataContextType = {
-    loading,
-    allCounties,
-    allJudges,
-    geoJson,
-    newYorkState,
-    currentPage,
-    setCurrentPage,
-    selectedEntity,
-    setSelectedEntity,
-    deviation,
-    setDeviation,
-    filterRace,
-    setFilterRace,
-    filterSeverity,
-    setFilterSeverity,
-    sortTarget,
-    setSortTarget,
-    countyNameFilter,
-    setCountyNameFilter,
-    judgeNameFilter,
-    setJudgeNameFilter,
-    setSelectedCounty,
-    selectedCounty,
-    selectedJudge,
-    setSelectedJudge,
-    severityLabels: [],
-  };
+  const contextValue: DataContextType = useMemo(
+    () => ({
+      loading,
+      allCounties,
+      allJudges,
+      geoJson,
+      newYorkState,
+      currentPage,
+      setCurrentPage,
+      selectedEntity,
+      setSelectedEntity,
+      deviation,
+      setDeviation,
+      filterRace,
+      setFilterRace,
+      filterSeverity,
+      setFilterSeverity,
+      sortTarget,
+      setSortTarget,
+      countyNameFilter,
+      setCountyNameFilter,
+      judgeNameFilter,
+      setJudgeNameFilter,
+      selectedCounty,
+      setSelectedCounty,
+      selectedJudge,
+      setSelectedJudge,
+      severityLabels: [],
+    }),
+    [
+      loading,
+      allCounties,
+      allJudges,
+      geoJson,
+      newYorkState,
+      currentPage,
+      setCurrentPage,
+      selectedEntity,
+      setSelectedEntity,
+      deviation,
+      setDeviation,
+      filterRace,
+      setFilterRace,
+      filterSeverity,
+      setFilterSeverity,
+      sortTarget,
+      setSortTarget,
+      countyNameFilter,
+      setCountyNameFilter,
+      judgeNameFilter,
+      setJudgeNameFilter,
+      selectedCounty,
+      setSelectedCounty,
+      selectedJudge,
+      setSelectedJudge,
+    ],
+  );
 
   return (
     <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>

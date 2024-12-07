@@ -7,6 +7,11 @@ interface VisualizerProps {
   type: "judge" | "county";
 }
 
+interface PieDataItem {
+  name: string;
+  value: number;
+}
+
 const Visualizer: React.FC<VisualizerProps> = ({ data, type }) => {
   const barChartRef = useRef<SVGSVGElement | null>(null);
   const pieChartRef = useRef<SVGSVGElement | null>(null);
@@ -29,11 +34,13 @@ const Visualizer: React.FC<VisualizerProps> = ({ data, type }) => {
     const margin = { top: 20, right: 30, bottom: 40, left: 40 };
 
     const x = d3
-      .scaleBand()
+      .scaleBand<string>()
       .range([margin.left, width - margin.right])
       .padding(0.1);
 
-    const y = d3.scaleLinear().range([height - margin.bottom, margin.top]);
+    const y = d3
+      .scaleLinear<number, number>()
+      .range([height - margin.bottom, margin.top]);
 
     const g = svg.append("g");
 
@@ -107,19 +114,19 @@ const Visualizer: React.FC<VisualizerProps> = ({ data, type }) => {
 
     const color = d3.scaleOrdinal(d3.schemeCategory10);
 
-    const pie = d3.pie<any>().value((d: any) => d.value);
+    const pie = d3.pie<PieDataItem>().value((d) => d.value);
 
     const path = d3
-      .arc<any>()
+      .arc<d3.PieArcDatum<PieDataItem>>()
       .outerRadius(radius - 10)
       .innerRadius(0);
 
     const label = d3
-      .arc<d3.PieArcDatum<any>>()
+      .arc<d3.PieArcDatum<PieDataItem>>()
       .outerRadius(radius)
       .innerRadius(radius - 80);
 
-    const pieData = [
+    const pieData: PieDataItem[] = [
       {
         name: "Bail Set",
         value: data.arraignmentResults.Any.Any.bailSet.percent,
@@ -143,14 +150,17 @@ const Visualizer: React.FC<VisualizerProps> = ({ data, type }) => {
 
     arc
       .append("path")
-      .attr("d", path)
-      .attr("fill", (d) => color(d.data.name));
+      .attr("d", (d: d3.PieArcDatum<PieDataItem>) => path(d))
+      .attr("fill", (d: d3.PieArcDatum<PieDataItem>) => color(d.data.name));
 
     arc
       .append("text")
-      .attr("transform", (d) => `translate(${label.centroid(d)})`)
+      .attr(
+        "transform",
+        (d: d3.PieArcDatum<PieDataItem>) => `translate(${label.centroid(d)})`,
+      )
       .attr("dy", "0.35em")
-      .text((d) => d.data.name);
+      .text((d: d3.PieArcDatum<PieDataItem>) => d.data.name);
   };
 
   const drawLineChart = () => {
@@ -161,9 +171,13 @@ const Visualizer: React.FC<VisualizerProps> = ({ data, type }) => {
     const height = 300;
     const margin = { top: 20, right: 30, bottom: 40, left: 40 };
 
-    const x = d3.scalePoint().range([margin.left, width - margin.right]);
+    const x = d3
+      .scalePoint<string>()
+      .range([margin.left, width - margin.right]);
 
-    const y = d3.scaleLinear().range([height - margin.bottom, margin.top]);
+    const y = d3
+      .scaleLinear<number, number>()
+      .range([height - margin.bottom, margin.top]);
 
     const line = d3
       .line<{ severity: string; avgBail: number }>()
