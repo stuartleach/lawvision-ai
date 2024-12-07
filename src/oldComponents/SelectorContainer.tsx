@@ -44,7 +44,6 @@ const SelectorContainer: React.FC = () => {
   const [localSortOrder, setLocalSortOrder] = useState<SortOrder>(
     SortOrder.desc,
   );
-  // @ts-ignore
   const [currentListTarget, setCurrentListTarget] = useState<
     "judges" | "counties"
   >("judges");

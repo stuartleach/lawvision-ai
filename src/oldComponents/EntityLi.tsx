@@ -88,7 +88,6 @@ const EntityListItem: React.FC<EntityListItemProps> = ({
           {targetItems === "judges" ? (
             <p className="flex text-xs leading-5 text-gray-500">
               <a href="/" className="relative truncate hover:underline">
-                {/*// @ts-ignore*/}
                 {entity?.primaryCounty || ""}
               </a>
             </p>

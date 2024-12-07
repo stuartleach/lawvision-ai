@@ -25,7 +25,7 @@ const EntityStatItem: React.FC<EntityStatItemProps> = ({
 }) => {
   // @ts-ignore
   const { selectedJudge, severityLabels } = useData();
-// @ts-ignore
+  // @ts-ignore
   const label = severityLabels[severity] || "All Charges";
 
   const races: Race[] = [
