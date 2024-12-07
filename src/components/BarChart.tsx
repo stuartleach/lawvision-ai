@@ -81,12 +81,18 @@ const JudgeComparisonChart: React.FC<JudgeComparisonChartProps> = ({
     return value && typeof value === 'object' && 'percent' in value && typeof value.percent === 'number';
   }
 
-  const chartData = metrics.map((metric) => ({
-    metric: metric.name,
-    Judge: hasPercentProperty(judge.arraignmentResults[severity][race][metric.key]) ? judge.arraignmentResults[severity][race][metric.key].percent : 0,
-    County: hasPercentProperty(county.arraignmentResults[severity][race][metric.key]) ? county.arraignmentResults[severity][race][metric.key].percent : 0,
-    State: hasPercentProperty(state.arraignmentResults[severity][race][metric.key]) ? state.arraignmentResults[severity][race][metric.key].percent : 0,
-  }));
+  const chartData = metrics.map((metric) => {
+    const judgeValue = judge.arraignmentResults[severity][race][metric.key];
+    const countyValue = county.arraignmentResults[severity][race][metric.key];
+    const stateValue = state.arraignmentResults[severity][race][metric.key];
+    
+    return {
+      metric: metric.name,
+      Judge: hasPercentProperty(judgeValue) ? judgeValue.percent : 0,
+      County: hasPercentProperty(countyValue) ? countyValue.percent : 0,
+      State: hasPercentProperty(stateValue) ? stateValue.percent : 0,
+    };
+  });
 
   const formatTick = (value: string) => {
     return value.length > 10 ? `${value.substring(0, 10)}...` : value;
