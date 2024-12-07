@@ -1,5 +1,5 @@
 import React from "react";
-import { DataProvider, useData } from "./hooks/useData.tsx";
+import { useData } from "./hooks/useData.tsx";
 
 import { Avatar } from "@/components/avatar";
 import {
@@ -43,7 +43,6 @@ import {
   QuestionMarkCircleIcon,
   XCircleIcon,
 } from "@heroicons/react/20/solid";
-import { CloudCog } from "lucide-react";
 
 
 const AboutPage: React.FC = () => {
@@ -62,7 +61,7 @@ const App: React.FC = () => {
 
   return (
       <Layout>
-        <div className={"flex-col flex"}>
+        <div className={"flex-col flex border-b-0"}>
           {currentPage === "home" && <JudgesTable />}
           {currentPage === "about" && <AboutPage />}
         </div>
