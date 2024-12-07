@@ -1,5 +1,5 @@
 import React from "react";
-import SelectorContainer from "../components/JudgeTable";
+import SelectorContainer from "../oldComponents/SelectorContainer";
 import { useData } from "../hooks/useData";
 
 const Home: React.FC = () => {

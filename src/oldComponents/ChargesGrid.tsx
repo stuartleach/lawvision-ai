@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Money from "../components/MoneyDisplay";
-import Percent from "../components/PercentDisplay";
+import Money from "./MoneyDisplay";
+import Percent from "./PercentDisplay";
 import { County, Judge, SeverityLevel } from "../types/frontendTypes";
 import { formatNumber } from "../utils/format";
 

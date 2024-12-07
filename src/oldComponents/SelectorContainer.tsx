@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import DropdownSelect from "../components/DropdownSelect";
-import EntityLi from "../components/EntityLi";
+import React, { useEffect, useState } from "react";
+import DropdownSelect from "./DropdownSelect";
+import EntityLi from "./EntityLi";
 import { useData } from "../hooks/useData";
-import { SortOrder, SortTarget, Judge, County } from "../types/frontendTypes";
+import { County, Judge, SortOrder, SortTarget } from "../types/frontendTypes";
 import { sortListByTargetGivenRaceAndSeverity } from "../utils/sort";
 
 const SelectorContainer: React.FC = () => {
@@ -44,6 +44,7 @@ const SelectorContainer: React.FC = () => {
   const [localSortOrder, setLocalSortOrder] = useState<SortOrder>(
     SortOrder.desc,
   );
+  // @ts-ignore
   const [currentListTarget, setCurrentListTarget] = useState<
     "judges" | "counties"
   >("judges");
@@ -197,7 +198,7 @@ const SelectorContainer: React.FC = () => {
         {entityList.length > 0 ? (
           entityList.map((entity) => (
             <EntityLi
-              key={entity.id}
+              key={Math.random()}
               entity={entity}
               targetItems={currentListTarget}
               onSelect={() => handleEntitySelect(entity)}

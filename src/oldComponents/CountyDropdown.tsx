@@ -31,7 +31,7 @@ const CountyDropdown: React.FC<CountyDropdownProps> = ({
 
   const handleClear = () => {
     setSelectedCountyName("All Counties");
-    onCountySelect(null);
+    onCountySelect("All Counties");
   };
 
   useEffect(() => {

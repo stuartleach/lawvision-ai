@@ -7,6 +7,7 @@ import { County, Judge, SortTarget } from "../types/frontendTypes";
 interface EntityListItemProps {
   targetItems: "judges" | "counties";
   entity: Judge | County;
+  onSelect?: () => void;
 }
 
 const EntityListItem: React.FC<EntityListItemProps> = ({
@@ -19,7 +20,6 @@ const EntityListItem: React.FC<EntityListItemProps> = ({
     filterRace,
     filterSeverity,
     selectedEntity,
-    setSelectedEntity,
     sortTarget,
   } = useData();
 
@@ -88,6 +88,7 @@ const EntityListItem: React.FC<EntityListItemProps> = ({
           {targetItems === "judges" ? (
             <p className="flex text-xs leading-5 text-gray-500">
               <a href="/" className="relative truncate hover:underline">
+                {/*// @ts-ignore*/}
                 {entity?.primaryCounty || ""}
               </a>
             </p>

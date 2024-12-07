@@ -39,7 +39,7 @@ export type TableControlsProps = {
   setCompareToStateAverage: (_compare: boolean) => void;
   compareToCountyAverage: boolean;
   setCompareToCountyAverage: (_compare: boolean) => void;
-  county: string | null;
+  county: string | undefined;
   setCounty: (_county: string) => void;
 };
 

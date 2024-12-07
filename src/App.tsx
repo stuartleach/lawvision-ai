@@ -105,44 +105,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       }
       sidebar={
         <Sidebar>
-          <SidebarHeader>
-            {/*<Dropdown>
-                            <DropdownButton as={SidebarItem} className="lg:mb-2.5">
-                                <SidebarLabel>LawVision</SidebarLabel>
-                                <ChevronDownIcon/>
-                            </DropdownButton>
-                            <DropdownMenu className="min-w-80 lg:min-w-64" anchor="bottom start">
-                                <DropdownItem href="/teams/1/settings">
-                                    <Cog8ToothIcon/>
-                                    <DropdownLabel>Settings</DropdownLabel>
-                                </DropdownItem>
-                                <DropdownDivider/>
-                                <DropdownItem href="/teams/1">
-                                    <Avatar slot="icon" src="/tailwind-logo.svg"/>
-                                    <DropdownLabel>Tailwind Labs</DropdownLabel>
-                                </DropdownItem>
-                                <DropdownItem href="/teams/2">
-                                    <Avatar slot="icon" initials="WC" className="bg-purple-500 text-white"/>
-                                    <DropdownLabel>Workcation</DropdownLabel>
-                                </DropdownItem>
-                                <DropdownDivider/>
-                                <DropdownItem href="/teams/create">
-                                    <PlusIcon/>
-                                    <DropdownLabel>New team&hellip;</DropdownLabel>
-                                </DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>*/}
-            {/*<SidebarSection className="max-lg:hidden">
-                            <SidebarItem href="/search">
-                                <MagnifyingGlassIcon/>
-                                <SidebarLabel>Search</SidebarLabel>
-                            </SidebarItem>
-                            <SidebarItem href="/inbox">
-                                <InboxIcon/>
-                                <SidebarLabel>Inbox</SidebarLabel>
-                            </SidebarItem>
-                        </SidebarSection>*/}
-          </SidebarHeader>
+          <SidebarHeader></SidebarHeader>
           <SidebarBody>
             <SidebarSection>
               <SidebarItem href="/">
@@ -153,34 +116,8 @@ function Layout({ children }: { children: React.ReactNode }) {
                 <QuestionMarkCircleIcon />
                 <SidebarLabel>About</SidebarLabel>
               </SidebarItem>
-              {/*   <SidebarItem href="/events">
-                                <Square2StackIcon/>
-                                <SidebarLabel>Events</SidebarLabel>
-                            </SidebarItem>
-                            <SidebarItem href="/orders">
-                                <TicketIcon/>
-                                <SidebarLabel>Orders</SidebarLabel>
-                            </SidebarItem>
-                            <SidebarItem href="/settings">
-                                <Cog6ToothIcon/>
-                                <SidebarLabel>Settings</SidebarLabel>
-                            </SidebarItem>
-                            <SidebarItem href="/broadcasts">
-                                <MegaphoneIcon/>
-                                <SidebarLabel>Broadcasts</SidebarLabel>
-                            </SidebarItem>*/}
             </SidebarSection>
             <SidebarSpacer />
-            {/*  <SidebarSection>
-                            <SidebarItem href="/support">
-                                <QuestionMarkCircleIcon/>
-                                <SidebarLabel>Support</SidebarLabel>
-                            </SidebarItem>
-                            <SidebarItem href="/changelog">
-                                <SparklesIcon/>
-                                <SidebarLabel>Changelog</SidebarLabel>
-                            </SidebarItem>
-                        </SidebarSection>*/}
           </SidebarBody>
         </Sidebar>
       }
