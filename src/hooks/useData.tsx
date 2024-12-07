@@ -1,3 +1,10 @@
+import {
+  County,
+  GeoJSONData,
+  Judge,
+  NewYorkState,
+  SortTarget,
+} from "@/types/frontendTypes";
 import React, {
   createContext,
   ReactNode,
@@ -6,13 +13,6 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import {
-  County,
-  GeoJSONData,
-  Judge,
-  NewYorkState,
-  SortTarget,
-} from "@/types/frontendTypes";
 import {
   getCounties,
   getGeoJson,
@@ -58,7 +58,7 @@ type DataProviderProps = {
 
 type PageOption = "home" | "about";
 
-const DataContext = createContext<DataContextType | undefined>(undefined);
+export const DataContext = createContext<DataContextType | undefined>(undefined);
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [currentPage, setCurrentPage] = useState<PageOption>("home");
@@ -211,3 +211,5 @@ export const useData = () => {
   }
   return context;
 };
+
+// export { DataContext };

@@ -26,6 +26,9 @@ import {
   SidebarSpacer,
 } from "@/components/sidebar.tsx";
 
+import { JudgeCard } from "@/components/JudgeCard.tsx";
+import { JudgesTable } from "@/components/JudgesTable.tsx";
+import { SidebarLayout } from "@/components/sidebar-layout";
 import {
   ArrowRightStartOnRectangleIcon,
   Cog8ToothIcon,
@@ -40,9 +43,15 @@ import {
   QuestionMarkCircleIcon,
   XCircleIcon,
 } from "@heroicons/react/20/solid";
-import { SidebarLayout } from "@/components/sidebar-layout";
-import { JudgesTable } from "@/components/JudgesTable.tsx";
-import { JudgeCard } from "@/components/JudgeCard.tsx";
+
+
+const AboutPage = () => {
+  return (
+    <div>
+      <p>about page</p>
+    </div>
+  );
+};
 
 const App: React.FC = () => {
   const { currentPage } = useData();
@@ -52,7 +61,7 @@ const App: React.FC = () => {
       <Layout>
         <div className={"flex-col flex"}>
           {currentPage === "home" && <JudgesTable />}
-          {/* {currentPage === "about" && <AboutPage />} */}
+          {currentPage === "about" && <AboutPage />}
         </div>
       </Layout>
     </DataProvider>
@@ -130,11 +139,10 @@ function Layout({ children }: { children: React.ReactNode }) {
       <div className="flex grow w-full">
         <div className={`flex-1 w-full ${selectedJudge ? "lg:flex" : ""}`}>
           <div
-            className={`border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 ${
-              selectedJudge
+            className={`border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 ${selectedJudge
                 ? "lg:w-1/2 xl:w-2/5 lg:shrink-0 lg:border-b-0 lg:border-r lg:pl-6"
                 : "w-full"
-            }`}
+              }`}
           >
             <div>{children}</div>
           </div>
