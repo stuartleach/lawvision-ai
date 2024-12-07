@@ -1,20 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Legend,
-  PolarAngleAxis,
-  PolarGrid,
-  Radar,
-  RadarChart,
-  Tooltip,
-  TooltipProps,
-  XAxis,
-  YAxis,
-} from "recharts";
 import {
   Card,
   CardContent,
@@ -39,6 +24,21 @@ import {
   SeverityLevel,
 } from "@/types/frontendTypes.ts";
 import { formatNumber, formatPercent } from "@/utils/format";
+import React, { useState } from "react";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  PolarAngleAxis,
+  PolarGrid,
+  Radar,
+  RadarChart,
+  Tooltip,
+  TooltipProps,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 type ChartDataPoint = {
   entity: "Judge" | "County" | "State";
