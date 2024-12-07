@@ -41,21 +41,24 @@ export interface FeatureImportances {
 export interface BailSet {
   raw: number;
   percent: number;
+  amount: number; // average bail amount
+}
 
-  [key: string]: any;
+export interface Remanded {
+  raw: number;
+  percent: number;
+}
+
+export interface Released {
+  raw: number;
+  percent: number;
 }
 
 export interface ArraignmentResults {
-  bailSet: {
-    raw: number;
-    percent: number;
-    amount: number;
-  };
-  remanded: BailSet;
-  released: BailSet;
+  bailSet: BailSet;
+  remanded: Remanded;
+  released: Released;
   totalCases: number;
-
-  [key: string]: any; // Add index signature here
 }
 
 export type Race =

@@ -43,7 +43,10 @@ const FeatureImportanceChart: React.FC = () => {
       .map(([key, value]) => ({ feature: key, [sortKey]: value }));
   };
 
-  const featureImportances: Record<DecisionType, any[]> = {
+  const featureImportances: Record<
+    DecisionType,
+    Array<{ feature: string; judge: number; county: number; state: number }>
+  > = {
     bailAmount: transformFeatureImportances(
       selectedJudge?.featureImportancesBailSet,
     ),

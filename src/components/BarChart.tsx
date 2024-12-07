@@ -23,7 +23,7 @@ import {
   Race,
   SeverityLevel,
 } from "@/types/frontendTypes.ts";
-import { formatNumber, formatPercent } from "@/utils/format";
+import { formatNumber } from "@/utils/format";
 import React, { useState } from "react";
 import {
   Bar,
@@ -97,10 +97,10 @@ const JudgeComparisonChart: React.FC<JudgeComparisonChartProps> = ({
       return (
         <div className="bg-zinc-800 p-2 border border-zinc-700 rounded shadow text-zinc-300">
           <p className="font-bold">{label}</p>
-          {payload.map((entry: any, index: number) => (
-            <p key={index} style={{ color: entry.color || "defaultColor" }}>
-              {`${entry.name || ""}: ${formatPercent(entry.value)}`}
-            </p>
+          {payload.map((entry, index) => (
+            <div key={index} style={{ color: entry.color }}>
+              {entry.name || "Unnamed"}: {entry.value}
+            </div>
           ))}
         </div>
       );
