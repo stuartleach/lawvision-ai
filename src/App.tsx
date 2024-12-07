@@ -1,6 +1,7 @@
 import React from "react";
 import { useData } from "./hooks/useData.tsx";
 
+import { About } from "@/components/About.tsx";
 import { Avatar } from "@/components/avatar";
 import {
   Dropdown,
@@ -45,27 +46,18 @@ import {
 } from "@heroicons/react/20/solid";
 
 
-const AboutPage: React.FC = () => {
-  return (
-    <div>
-      <p>about page</p>
-      <p>about page</p>
-      <p>about page</p>
-      <p>about page</p>
-    </div>
-  );
-};
+
 
 const App: React.FC = () => {
   const { currentPage } = useData();
 
   return (
-      <Layout>
-        <div className={"flex-col flex border-b-0"}>
-          {currentPage === "home" && <JudgesTable />}
-          {currentPage === "about" && <AboutPage />}
-        </div>
-      </Layout>
+    <Layout>
+      <div className={"flex-col flex border-b-0"}>
+        {currentPage === "home" && <JudgesTable />}
+        {currentPage === "about" && <About />}
+      </div>
+    </Layout>
   );
 };
 
@@ -121,11 +113,11 @@ function Layout({ children }: { children: React.ReactNode }) {
           <SidebarHeader></SidebarHeader>
           <SidebarBody>
             <SidebarSection>
-              <SidebarItem onClick={() => {console.log("setting current page now"); setCurrentPage("home"); console.log("current page: ", currentPage)}}>
+              <SidebarItem onClick={() => { console.log("setting current page now"); setCurrentPage("home"); console.log("current page: ", currentPage) }}>
                 <HomeIcon />
                 <SidebarLabel>Home</SidebarLabel>
               </SidebarItem>
-              <SidebarItem onClick={() => {console.log("setting current page now"); setCurrentPage("about"); console.log("current page: ", currentPage)}}>
+              <SidebarItem onClick={() => { console.log("setting current page now"); setCurrentPage("about"); console.log("current page: ", currentPage) }}>
                 <QuestionMarkCircleIcon />
                 <SidebarLabel>About</SidebarLabel>
               </SidebarItem>
