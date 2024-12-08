@@ -11,7 +11,9 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -132,37 +134,47 @@ const JudgeComparisonChart: React.FC<JudgeComparisonChartProps> = ({
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="mb-4 flex gap-4">
-          <Select
-            onValueChange={(value) => setSeverity(value as SeverityLevel)}
-            defaultValue={severity}
-          >
-            <SelectTrigger className="bg-zinc-800 text-zinc-300 border-zinc-700">
-              <SelectValue placeholder="Select severity" />
-            </SelectTrigger>
-            <SelectContent className="bg-zinc-800 border-zinc-700">
-              {Object.keys(judge.arraignmentResults).map((sev) => (
-                <SelectItem className="text-zinc-300" key={sev} value={sev}>
-                  {sev}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Select
-            onValueChange={(value) => setRace(value as Race)}
-            defaultValue={race}
-          >
-            <SelectTrigger className="bg-zinc-800 text-zinc-300 border-zinc-700">
-              <SelectValue placeholder="Select race" />
-            </SelectTrigger>
-            <SelectContent className="bg-zinc-800 border-zinc-700">
-              {Object.keys(judge.arraignmentResults.Any).map((r) => (
-                <SelectItem className="text-zinc-300" key={r} value={r}>
-                  {r}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+        <div className="mb-4 flex gap-4 w-full">
+          <div className="flex flex-col w-full">
+            <SelectGroup>
+              <SelectLabel className="pl-1 text-zinc-400 text-left">Severity</SelectLabel>
+            </SelectGroup>
+            <Select
+              onValueChange={(value) => setSeverity(value as SeverityLevel)}
+              defaultValue={severity}
+            >
+              <SelectTrigger className="bg-zinc-800 text-zinc-300 border-zinc-700">
+                <SelectValue placeholder="Select severity" />
+              </SelectTrigger>
+              <SelectContent className="bg-zinc-800 border-zinc-700">
+                {Object.keys(judge.arraignmentResults).map((sev) => (
+                  <SelectItem className="text-zinc-300" key={sev} value={sev}>
+                    {sev}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col w-full">
+            <SelectGroup>
+              <SelectLabel className="pl-1 text-zinc-400 text-left">Race</SelectLabel>
+            </SelectGroup>
+            <Select
+              onValueChange={(value) => setRace(value as Race)}
+              defaultValue={race}
+            >
+              <SelectTrigger className="bg-zinc-800 text-zinc-300 border-zinc-700">
+                <SelectValue placeholder="Select race" />
+              </SelectTrigger>
+              <SelectContent className="bg-zinc-800 border-zinc-700">
+                {Object.keys(judge.arraignmentResults.Any).map((r) => (
+                  <SelectItem className="text-zinc-300" key={r} value={r}>
+                    {r}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
         <div className="w-full aspect-square max-h-[400px]">
           <RadarChart
@@ -206,7 +218,7 @@ const JudgeComparisonChart: React.FC<JudgeComparisonChartProps> = ({
       <CardFooter className="flex-col gap-2 pt-4 text-sm">
         <div className="flex items-center gap-2 leading-none text-zinc-400">
           Pretrial decisions when the charge is of severity{" "}
-          <span className="font-mono bg-zinc-800 p-1 rounded">{severity}</span>{" "}
+          <span className="font-mono bg-zinc-800 p-1 rounded">{severity.toLowerCase()}</span>{" "}
           and the defendant's race is{" "}
           <span className="font-mono bg-zinc-800 p-1 rounded">
             {race.toLowerCase()}
@@ -279,11 +291,16 @@ export function ShadBarChart({ judge, county, state }: Props) {
       </CardHeader>
       <CardContent>
         <div className="mb-4 flex gap-4">
+          <div className="flex flex-col w-full">
+          <SelectGroup>
+            <SelectLabel className="pl-1 text-zinc-400 text-left">Arraignment Metric</SelectLabel>
+          </SelectGroup>
+
           <Select
             onValueChange={(value) => setMetric(value as never)}
             defaultValue={metric}
           >
-            <SelectTrigger className="text-zinc-300">
+            <SelectTrigger className="bg-zinc-800 text-zinc-300 border-zinc-700">
               <SelectValue
                 className="text-zinc-300"
                 placeholder="Select metric"
@@ -304,11 +321,18 @@ export function ShadBarChart({ judge, county, state }: Props) {
               </SelectItem>
             </SelectContent>
           </Select>
+</div>
+
+<div className="flex flex-col w-full">
+          <SelectGroup>
+            <SelectLabel className="pl-1 text-zinc-400 text-left">Charge Severity</SelectLabel>
+          </SelectGroup>
+
           <Select
             onValueChange={(value) => setSeverity(value as SeverityLevel)}
             defaultValue={severity}
           >
-            <SelectTrigger>
+            <SelectTrigger className="bg-zinc-800 text-zinc-300 border-zinc-700">
               <SelectValue placeholder="Select severity" />
             </SelectTrigger>
             <SelectContent className="bg-zinc-800">
@@ -319,6 +343,7 @@ export function ShadBarChart({ judge, county, state }: Props) {
               ))}
             </SelectContent>
           </Select>
+          </div>
         </div>
         <BarChart
           className="text-red-200"
