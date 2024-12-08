@@ -12,7 +12,7 @@ export const About = () => (
             <h2 className="mt-6 text-3xl font-semibold tracking-tight text-zinc-100">Overview</h2>
             <div className="font-light tracking-tight">
                 <p className="mt-6 text-xl/8">
-                    Bail is the fee a defendant can pay to be released from custody pending trial. The purpose of bail is to ensure that the defendant appears in court for their trial. If the defendant fails to appear in court, the bail is forfeited. Otherwise, the defendant recoups the expense.
+                    <b className="font-bold">"Bail"</b> is the fee a defendant can pay to be released from custody pending trial. The purpose of bail is to ensure that the defendant appears in court for their trial. If the defendant fails to appear in court, the bail is forfeited. Otherwise, the defendant recoups the expense.
                 </p>
                 <p className="mt-6 text-xl/8">
                     The bail system is controversial because it can lead to the pretrial detention of individuals who cannot afford to pay bail. In New York City, this often means a stint at Rikers Island, a notorious jail complex that has been the subject of numerous investigations and lawsuits.
