@@ -68,7 +68,7 @@ export const About = () => (
                 Incompleteness of the dataset
             </p>
             <p className="text-yellow-100 text-xl/8">
-                This data is incomplete, both in its range and its scope. In a perfect world (or one where compute is cheaper and court records are more thorough), this model would take bail eligibility into account, and set ROR "release on recognizance" decisions to a bail amount of $0.00, which would give us deeper and more complete insight into a correlations between bail amounts and other factors. As it is currently running, the model only accounts for bail amounts > 0.
+                This data is incomplete, both in its range and its scope. In a perfect world (or one where compute is cheaper and court records are more thorough), this model would take bail eligibility into account, and set ROR "release on recognizance" decisions to a bail amount of $0.00, which would give us deeper and more complete insight into a correlations between bail amounts and other factors. As it is currently running, the model only accounts for bail amounts &gt; 0.
             </p>
         </div>
     </div>
