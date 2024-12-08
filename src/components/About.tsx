@@ -1,5 +1,10 @@
+
+
 export const About = () => (
     <div className="px-6 pb-32 lg:px-8 font-light tracking-tight *:my-2">
+        <div className="flex flex-col items-center justify-center">
+            <img className="max-w-3xl rounded-2xl h-200 w-400 mb-6" src={'/defendant.png'} alt="Defendant" />
+        </div>
         <div className="mx-auto max-w-3xl text-base/7 text-zinc-300">
             <h1 className="mt-2 text-pretty text-4xl font-semibold tracking-tight text-zinc-300 sm:text-5xl border-b border-white border-opacity-40 pb-2 mb-4">
                 LawVision
