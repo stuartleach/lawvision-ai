@@ -52,6 +52,7 @@ export const About = () => (
                     What factors have a higher importance value to some judges than others?
                 </li>
             </ul>
+            <h2 className="mt-6 text-3xl font-semibold tracking-tight text-zinc-100">Caution</h2>
             <p className="mt-6 text-xl/8 text-purple-500 font-semibold">
                 Drawing inferences
             </p>
