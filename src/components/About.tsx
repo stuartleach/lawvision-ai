@@ -63,7 +63,7 @@ export const About = () => (
                 Disclaimer
             </p>
             <p className="text-xl/8 text-red-300">
-                This is not and will never be a tool to be used by counsel. It can't teach a lawyer what to emphasize on their client's behalf. This model will never be as effective as a reasonably perceptive defense attorney. This project is only to understand the extent that judges in New York State abide by the rules laid out in CPL 510.10.
+                This is not and will never be a tool to be used by counsel. It can't teach a lawyer what to emphasize on their client's behalf. This model will never be as effective as a reasonably perceptive defense attorney. This project is only to consider the extent that judges in New York State appear to abide by the rules laid out in CPL 510.10.
             </p>
             <p className="mt-6 text-yellow-300 text-xl/8 font-semibold">
                 Incompleteness of the dataset
