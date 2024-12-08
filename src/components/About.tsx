@@ -1,5 +1,3 @@
-import { CheckCircleIcon, InformationCircleIcon } from '@heroicons/react/20/solid'
-
 export const About = () => {
     return (
         <div className="px-6 pb-32 pt-16 lg:px-8 font-light">
