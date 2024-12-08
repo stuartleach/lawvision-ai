@@ -1,2 +1,0 @@
-judge,case_count,race,gender,age_at_arrest,prior_vfo_cnt,rearrest,pend_vfo,prior_nonvfo_cnt,prior_misd_cnt,offense_month,offense_year,top_charge_weight_at_arraign,top_charge_at_arraign_violent_felony_ind,hate_crime_ind,top_charge_at_arraign,district
-"King, Daniel R.",241,0.0741159064662475,0.04557406222490774,0.12283414257811602,0.06295921584788679,0.013204638153290045,0.015830563008915107,0.06323459757938125,0.09701523091025047,0.113204019456928,0.07683425764391773,0.12612421777131314,0.029345488237742863,0.0,0.15972366012110342,0.0

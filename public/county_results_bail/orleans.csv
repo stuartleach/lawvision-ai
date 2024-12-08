@@ -1,2 +1,0 @@
-judge,case_count,race,gender,age_at_arrest,prior_vfo_cnt,rearrest,pend_vfo,prior_nonvfo_cnt,prior_misd_cnt,offense_month,offense_year,top_charge_weight_at_arraign,top_charge_at_arraign_violent_felony_ind,hate_crime_ind,top_charge_at_arraign,district
-"Church, Sanford A.",266,0.04440419967203899,0.022246651976910555,0.11522161328373347,0.14888738155110284,0.006822102284118992,0.014900181468428326,0.09865335106933201,0.09674208706256798,0.1067600116824895,0.06564850981463119,0.06708001143314789,0.05955038567239512,0.0,0.15308351302910303,0.0

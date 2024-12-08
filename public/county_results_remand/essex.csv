@@ -1,2 +1,0 @@
-judge,case_count,race,gender,age_at_arrest,prior_vfo_cnt,rearrest,pend_vfo,prior_nonvfo_cnt,prior_misd_cnt,offense_month,offense_year,top_charge_weight_at_arraign,top_charge_at_arraign_violent_felony_ind,hate_crime_ind,top_charge_at_arraign,district
-"Meyer, Richard B.",257,0.0019094432960112106,0.006180571890394543,0.13671497059009402,0.04906071266068377,0.023059227457625658,0.0024594775536592754,0.13098931507377126,0.09879476588933497,0.10093394221304867,0.06436994717072392,0.16259057278193986,0.03345856492839135,0.0,0.18947848849432153,0.0
