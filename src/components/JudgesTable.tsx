@@ -301,7 +301,15 @@ const JudgesTable: React.FC = () => {
         <TableBody>
           {filteredJudges.map((judge: Judge) => (
             <TableRow
-              onClick={() => setSelectedJudge(judge)}
+              onClick={() => {
+                setSelectedJudge(judge);
+                // window.scrollTo(0, 0);
+                // smoothly scroll to top
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }}
               className={"hover:cursor-pointer hover:bg-zinc-800"}
               key={judge.judgeId}
             >
