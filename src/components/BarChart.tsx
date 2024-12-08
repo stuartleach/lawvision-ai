@@ -114,7 +114,7 @@ const JudgeComparisonChart: React.FC<JudgeComparisonChartProps> = ({
           <p className="font-bold">{label}</p>
           {payload.map((entry, index) => (
             <div key={index} style={{ color: entry.color }}>
-              {entry.name || "Unnamed"}: {entry.value}
+              {entry.name || "Unnamed"}: {entry.value?.toFixed(2)}
             </div>
           ))}
         </div>
